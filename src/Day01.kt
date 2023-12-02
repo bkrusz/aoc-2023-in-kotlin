@@ -39,11 +39,4 @@ fun main() {
         }
         return sum
     }
-
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    val input = readInput("Day01")
-
-    println(part2(testInput))
-    println(part2(input))
 }
