@@ -28,10 +28,4 @@ fun main() {
         total *= numTimesBeat
         return total
     }
-
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day06_test")
-    val input = readInput("Day06")
-
-    println(part2(input))
 }
