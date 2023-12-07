@@ -1,13 +1,37 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        return input.size
+        var total = 1
+        val time = "\\d+".toRegex().findAll(input[0]).groupBy { it.value.toInt() }.keys
+        val distance = "\\d+".toRegex().findAll(input[1]).groupBy { it.value.toInt() }.keys
+        for (t in time.indices) {
+            var numTimesBeat = 0
+            for (i in 1..<time.elementAt(t)) {
+                if (i * (time.elementAt(t) - i) > distance.elementAt(t)) {
+                    numTimesBeat += 1
+                }
+            }
+            total *= numTimesBeat
+        }
+        return total
     }
 
     fun part2(input: List<String>): Int {
-        return input.size
+        var total = 1
+        val time = "\\d+".toRegex().findAll(input[0]).groupBy { it.value.toInt() }.keys.joinToString("").toLong()
+        val distance = "\\d+".toRegex().findAll(input[1]).groupBy { it.value }.keys.joinToString("").toLong()
+        var numTimesBeat = 0
+        for (i in 1..<time) {
+            if (i * (time - i) > distance) {
+                numTimesBeat += 1
+            }
+        }
+        total *= numTimesBeat
+        return total
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day00_test")
-    val input = readInput("Day00")
+    val testInput = readInput("Day06_test")
+    val input = readInput("Day06")
+
+    println(part2(input))
 }
